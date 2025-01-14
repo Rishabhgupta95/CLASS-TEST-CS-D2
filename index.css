@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #6a0dad;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#bulbsContainer {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: white;
+    padding: 40px ;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bulb-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bulb {
+    width: 50px;
+    height: 80px;
+    background-image: url('https://pics.clipartpng.com/Light_Bulb_PNG_Clip_Art-2102.png');
+    background-size: cover;
+}
+
+.bulb.on {
+    background-image: url('https://pics.clipartpng.com/midle/Yellow_Light_Bulb_PNG_Clip_Art-2108.png');
+}
+
+.slider {
+    top: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 34px;
+    height: 20px;
+    background: red;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: 0.3s;
+}
+
+.slider.on {
+    background: green;
+}
+
+.slider.on::before {
+    transform: translateX(14px);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button#startButton {
+    position: absolute;
+    background-color: white;
+    color: #6a0dad;
+   width: 10rem;
+   height: 10rem;
+}
+
+button#doneButton {
+    background-color: #28a745;
+    color: white;
+}
+
+button#resetButton {
+    position: relative;
+    left: 10rem;
+    background-color: #dc3545;
+    color: white;
+}

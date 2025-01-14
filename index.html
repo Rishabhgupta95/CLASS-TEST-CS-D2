@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb UI Task</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="app">
+        <button id="startButton">START</button>
+
+        <div id="modal" class="hidden">
+            <div class="modal-content">
+                <h2>Custom Lighting</h2>
+                <label for="numBulbs">Enter Number of Bulbs:</label>
+                <input type="number" id="numBulbs" min="1">
+                <button id="doneButton">Done</button>
+            </div>
+        </div>
+
+        <div id="bulbsContainer" class="hidden"></div>
+
+        <button id="resetButton" class="hidden">Reset</button>
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const modal = document.getElementById('modal');
+        const doneButton = document.getElementById('doneButton');
+        const numBulbsInput = document.getElementById('numBulbs');
+        const bulbsContainer = document.getElementById('bulbsContainer');
+        const resetButton = document.getElementById('resetButton');
+
+        startButton.addEventListener('click', () => {
+            startButton.classList.add('hidden');
+            modal.classList.remove('hidden');
+        });
+
+        doneButton.addEventListener('click', () => {
+            const numBulbs = parseInt(numBulbsInput.value);
+            if (isNaN(numBulbs) || numBulbs < 1) {
+                alert('Please enter a valid number of bulbs.');
+                return;
+            }
+
+            modal.classList.add('hidden');
+            bulbsContainer.innerHTML = ''; 
+
+            for (let i = 0; i < numBulbs; i++) {
+                const bulbContainer = document.createElement('div');
+                bulbContainer.classList.add('bulb-container');
+
+                const bulb = document.createElement('div');
+                bulb.classList.add('bulb');
+
+                const slider = document.createElement('div');
+                slider.classList.add('slider');
+
+                slider.addEventListener('click', () => {
+                    bulb.classList.toggle('on');
+                    slider.classList.toggle('on');
+                });
+
+                bulbContainer.appendChild(bulb);
+                bulbContainer.appendChild(slider);
+                bulbsContainer.appendChild(bulbContainer);
+            }
+
+            bulbsContainer.classList.remove('hidden');
+            resetButton.classList.remove('hidden');
+        });
+
+        resetButton.addEventListener('click', () => {
+            bulbsContainer.classList.add('hidden');
+            bulbsContainer.innerHTML = '';
+            resetButton.classList.add('hidden');
+            modal.classList.add('hidden');
+            startButton.classList.remove('hidden');
+            numBulbsInput.value = '';
+        });
+    </script>
+</body>
+</html>
